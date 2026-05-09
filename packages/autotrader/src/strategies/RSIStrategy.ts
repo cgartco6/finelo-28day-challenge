@@ -133,4 +133,20 @@ export class RSIStrategy implements TradingStrategy {
   private calculatePositionSize(rsi: number): number {
     // Scale position size based on RSI extremity
     const extremity = Math.abs(rsi - 50);
-    const scale = Math.min(2, extremity /
+    const scale = Math.min(2, extremity / 25);
+    const baseSize = 100;
+    return Math.floor(baseSize * scale);
+  }
+  
+  getPerformance(): PerformanceMetrics {
+    return { ...this.performance };
+  }
+  
+  updateConfig(config: Partial<StrategyConfig>): void {
+    this.config = { ...this.config, ...config };
+  }
+  
+  getConfig(): StrategyConfig {
+    return { ...this.config };
+  }
+}
