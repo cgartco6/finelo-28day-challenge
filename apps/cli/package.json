@@ -1,0 +1,11 @@
+{
+  "name": "@finelo/cli",
+  "version": "1.0.0",
+  "scripts": {
+    "avc:run": "tsx src/avc-run.ts",
+    "avc:adapt": "tsx src/avc-adapt.ts"
+  },
+  "dependencies": {
+    "@finelo/engine": "*"
+  }
+}
