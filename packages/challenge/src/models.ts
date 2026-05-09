@@ -1,19 +1,49 @@
-// packages/challenge/src/models.ts
-export interface Lesson {
-  day: number;
-  title: string;
-  content: string; // Markdown or rich text
-  quiz: Quiz;
-  simulatorTask?: SimulatorTask;
+export interface Question {
+  id: string;
+  text: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
 }
 
 export interface Quiz {
-  questions: Array<{ text: string; options: string[]; correct: number }>;
+  id: string;
+  title: string;
+  questions: Question[];
+  passingScore: number;
 }
 
-export interface Progress {
+export interface SimulatorTask {
+  type: 'buy' | 'sell' | 'analyze';
+  asset: string;
+  targetPrice?: number;
+  quantity?: number;
+}
+
+export interface Lesson {
+  day: number;
+  title: string;
+  description: string;
+  content: string;
+  learningObjectives: string[];
+  quiz: Quiz;
+  simulatorTask?: SimulatorTask;
+  resources: string[];
+}
+
+export interface UserProgress {
   userId: string;
   completedDays: number[];
-  currentStreak: number;
-  quizScores: Record<number, number>;
+  currentDay: number;
+  quizScores: Map<number, number>;
+  startedAt: Date;
+  lastActiveAt: Date;
+  streak: number;
+}
+
+export interface ChallengeStats {
+  totalUsers: number;
+  averageCompletion: number;
+  mostFailedDay: number;
+  popularLessons: number[];
 }
