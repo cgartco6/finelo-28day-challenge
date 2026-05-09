@@ -2,18 +2,34 @@
   "name": "finelo-28day-challenge",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["packages/*", "apps/*"],
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
     "test": "turbo test",
+    "test:watch": "turbo test -- --watch",
     "lint": "turbo lint",
-    "avc:run": "tsx apps/cli/src/avc-run.ts",
-    "avc:adapt": "tsx apps/cli/src/avc-adapt.ts"
+    "clean": "turbo clean && rm -rf node_modules",
+    "setup": "bash scripts/setup.sh",
+    "seed": "tsx scripts/seed-data.ts",
+    "avc:run": "turbo run avc:run --filter=@finelo/cli",
+    "avc:adapt": "turbo run avc:adapt --filter=@finelo/cli",
+    "docker:up": "docker-compose -f docker/docker-compose.yml up",
+    "docker:down": "docker-compose -f docker/docker-compose.yml down"
   },
   "devDependencies": {
     "turbo": "^2.0.0",
     "typescript": "^5.4.0",
-    "tsx": "^4.7.0"
+    "tsx": "^4.7.0",
+    "@types/node": "^20.11.0",
+    "vitest": "^1.0.0",
+    "@vitest/coverage-v8": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
