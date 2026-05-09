@@ -1,0 +1,19 @@
+{
+  "name": "finelo-28day-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "avc:run": "tsx apps/cli/src/avc-run.ts",
+    "avc:adapt": "tsx apps/cli/src/avc-adapt.ts"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0",
+    "tsx": "^4.7.0"
+  }
+}
