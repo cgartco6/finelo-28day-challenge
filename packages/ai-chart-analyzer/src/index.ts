@@ -1,2 +1,9 @@
-export { AIChatAnalyzer } from "./Analyzer.js";
-export { AnalysisResult } from "./types.js";
+export { AIChartAnalyzer } from './Analyzer.js';
+export type { 
+  AnalysisResult, 
+  ChartPattern, 
+  TrendDirection, 
+  SupportResistanceLevel,
+  PatternType 
+} from './types.js';
+export { PatternConfidence, TimeFrame } from './types.js';
